@@ -1,15 +1,13 @@
+import { TenantGuard } from './../tenant/tenant.guard';
+import { JwtAuthGuard } from './../auth/jwt-auth.guard';
 import { Controller, Get, Post, Body, UseGuards, Req } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { TenantGuard } from 'src/tenant/tenant.guard';
-import { TenantService } from 'src/tenant/tenant/tenant.service';
 
 @UseGuards(JwtAuthGuard, TenantGuard)
 @Controller('transactions')
 export class TransactionsController {
-  constructor(private readonly transactionsService: TransactionsService, 
-    private tenantService: TenantService) {}
+  constructor(private readonly transactionsService: TransactionsService) {}
 
   @Post()
   create(@Body() createTransactionDto: CreateTransactionDto) {
@@ -17,8 +15,7 @@ export class TransactionsController {
   }
 
   @Get()
-  findAll(@Req() request) {
-    console.log(this.tenantService.tenant, request.user)
+  findAll(@Req() req) {
     return this.transactionsService.findAll();
   }
 }

@@ -12,8 +12,8 @@ export class TenantService {
     return this.account;
   }
 
-  set tenant(account: Account) {
-    this.tenant = account;
+  set tenant(tenant: Account) {
+    this.account = tenant;
   }
 
   async setTenantBy(subdomain: string) {

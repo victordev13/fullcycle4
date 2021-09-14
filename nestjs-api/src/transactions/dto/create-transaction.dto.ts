@@ -1,16 +1,16 @@
 import {
-  IsISO8601,
-  IsNotEmpty,
-  IsString,
-  MaxLength,
-  IsIn,
-} from 'class-validator';
-import {
   TransactionCategory,
   TransactionCategoryList,
   TransactionType,
   TransactionTypeList,
-} from '../entities/transaction.entity';
+} from './../entities/transaction.entity';
+import {
+  IsIn,
+  IsISO8601,
+  IsNotEmpty,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 
 export class CreateTransactionDto {
   @IsISO8601()
@@ -23,6 +23,7 @@ export class CreateTransactionDto {
   name: string;
 
   @MaxLength(255)
+  @IsString()
   @IsNotEmpty()
   description: string;
 

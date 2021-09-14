@@ -1,3 +1,5 @@
+import { ToNumber } from '../../common/db/to-number.decorator';
+import { Account } from './../../accounts/entities/account.entity';
 import {
   Model,
   Column,
@@ -7,8 +9,6 @@ import {
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
-import { Account } from 'src/accounts/entities/account.entity';
-import { ToNumber } from '../../common/db/to-number.decorator';
 
 export enum TransactionCategory {
   CATEGORY1 = 'category1',
@@ -22,6 +22,7 @@ export enum TransactionType {
   CREDIT = 'credit',
   DEBIT = 'debit',
 }
+
 export const TransactionTypeList: string[] = Object.values(TransactionType);
 
 @Table({

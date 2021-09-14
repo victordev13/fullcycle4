@@ -1,0 +1,9 @@
+POST http://localhost:8080/auth/realms/fullcycle/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+
+client_id=nest
+&client_secret=47c12a4b-e79b-4dc6-99b0-29862bcda38d
+&grant_type=password
+&username=user@user.com
+&password=123456
